@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: black;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div[data-vd="myfanbox"] {
+            width: 300px;
+            height: 300px;
+            background-image: url("fan.png");
+            background-size: cover;
+            margin: 100px auto;
+            animation: fan-anim 10s linear infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes fan-anim {
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .btn-div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fan-box" id="fan-box" data-vd="myfanbox"></div>
+    <div class="btn-div">
+        <button onclick="fan(stop)">STOP</button>
+        <button onclick="fan(1)">1</button>
+        <button onclick="fan(2)">2</button>
+        <button onclick="fan(3)">3</button>
+    </div>
+
+    <script>
+        function fan(speed) {
+            if (speed == "stop") {
+                document.querySelector('[data-vd="myfanbox"]').style.animationPlayState = 'paused';
+            } else if (speed == 1) {
+                document.querySelector('#fan-box').style.animationPlayState = 'running';
+                document.querySelector('#fan-box').style.animationDuration = '4s';
+            } else if (speed == 2) {
+                document.querySelector('.fan-box').style.animationPlayState = 'running';
+                document.querySelector('.fan-box').style.animationDuration = '2s';
+            } else if (speed == 3) {
+                document.querySelector('.fan-box').style.animationPlayState = 'running';
+                document.querySelector('.fan-box').style.animationDuration = '0.10s';
+            }
+        }
+    </script>
+</body>
+
+</html>
